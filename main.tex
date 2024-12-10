@@ -1,4 +1,5 @@
 \documentclass[10pt]{ctexart}
+\usepackage[colorlinks=true]{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{esint}
@@ -13,18 +14,23 @@
 \geometry{a5paper,scale=0.9}
 \pagestyle{empty}
 \author{树影、九鸟}
-\title{大雾二寄结论速寄v1.2}
+\title{大雾二寄结论速寄2}
 \date{}
 
 \begin{document}
 \maketitle
+\newpage
+\tableofcontents
+\newpage
 \section*{前言}
 
 上一次的笔记就说明了，这玩意只有复习作用，不代表考试会考（）。依然不会对内容正确性负责。
 
 \section{热力学}
+\label{sec:热力学}
 
 \subsection{理想气体、(热力学定律:theorems list)[0]}
+\label{subsec:理想气体、(热力学定律:theorems list)[0]}
 
 理想气体状态方程常见的形式如下：
 \begin{align*}
@@ -63,6 +69,7 @@
 热力学定律[0]: 如果物体A与物体B处于热平衡状态，物体A与物体C也处于热平衡状态，则物体B与物体C也处于热平衡状态。
 
 \subsection{物质的微观模型，统计规律}
+\label{subsec:物质的微观模型，统计规律}
 
 \begin{figure}[H]
     \centering
@@ -104,6 +111,7 @@ $$
 由：$\bar{\varepsilon_k} = \frac{3}{2} k T$可知，对于分别处于相同温度的两种气体，其分子的平均平动动能相同。
 
 \subsection{能量均分定理}
+\label{subsec:能量均分定理}
 
 定义将分子能量中速度和坐标的二次项数目叫做分子能量的自由度数目，简称为自由度，用符号 $i$ 表示。
 
@@ -116,6 +124,7 @@ $$
 \end{figure}
 
 \subsection{麦克斯韦速率分布定律}
+\label{subsec:麦克斯韦速率分布定律}
 
 对于分布在速度区间 $v$ 到 $v + d v$ 的分子的概率：
 
@@ -151,6 +160,7 @@ $$
 $$
 
 \subsection{三种统计速率}
+\label{subsec:三种统计速率}
 
 方均根速率、平均速率、最概然速率：
 \begin{align*}
@@ -165,4 +175,63 @@ $$
 
 大小关系：由于 $v_{\text{rms}} > v_{\text{avg}} > v_{\text{mp}}$，所以在速率分布图上，$v_{\text{rms}}$ 在 $v_{\text{avg}}$ 和 $v_{\text{mp}}$ 之间。
 
+\subsection{玻尔兹曼能量分布定律}
+\label{subsec:玻尔兹曼能量分布定律}
+
+麦克斯韦速率分布可以改写为：
+$$
+    d N = N \left( \frac{m}{2 \pi k T} \right)^{3/2} e^{-\frac{\varepsilon_k}{k T}} d v
+$$
+
+在还存在势场的情况下，玻尔兹曼认为应该用$\varepsilon_k + \varepsilon_p$来代替$\varepsilon_k$，从这个角度，他得到了分子数关于速度与位置的分布：
+$$
+    d N_{v_x,v_y,v_z,x,y,z} = n_0 \left( \frac{m}{2 \pi k T} \right)^{3/2} e^{-\frac{\varepsilon_k + \varepsilon_p}{k T}} d v_x d v_y d v_z d x d y d z
+$$
+
+$n_0$ 表示势能为零时的分子数密度。
+
+对上式对速度积分，得到：
+$$
+    d N_{x,y,z} = n_0 e^{-\frac{\varepsilon_p}{k T}} d x d y d z
+$$
+
+即：
+$$
+    n = n_0 e^{-\frac{\varepsilon_p}{k T}}
+$$
+
+在地球表面，$\varepsilon_p = mgh$，所以：
+$$
+    n = n_0 e^{-\frac{mgh}{k T}}
+$$
+
+假如认为地球大气是等温的，并且忽略地球引力的变化，那么可以得到重力场中的等温气压分布：
+$$
+    p = p_0 e^{-\frac{mgh}{k T}}
+$$
+
+由此便可以进行高度估计：
+$$
+    h = \frac{k T}{m g} \ln \frac{p_0}{p} = \frac{R T}{M g} \ln \frac{p_0}{p}
+$$
+
+\subsection{分子之间的碰撞频率与平均自由程}
+\label{subsec:分子之间的碰撞频率与平均自由程}
+
+分子之间的平均碰撞频率为：
+$$
+    \bar{Z} = \sqrt{2} \pi d^2 \bar{v} n
+$$
+
+其中 $d$ 为分子直径，$n$ 为分子数密度，$\bar{v}$ 为分子平均速率。
+
+而平均自由程可以表示为：
+$$
+    \bar{\lambda} = \frac{\bar{v}}{\bar{Z}} = \frac{1}{\sqrt{2}\pi d^2 n}
+$$
+
+由于$p = nkT$，所以可以得到：
+$$
+    \bar{\lambda} = \frac{kT}{\sqrt{2}\pi d^2 p}
+$$
 \end{document}
